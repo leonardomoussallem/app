@@ -1,9 +1,15 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { colors } from '../utils/colors';
 import { fonts } from '../utils/fonts';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
+
+  const handleLogin = () => {
+    navigation.navigate("LOGIN");
+  };
   return (
     <View style={styles.container}>
       <Image source={require("../assets/tgmlogo.png")} style={styles.bannerImage}/>
@@ -12,6 +18,18 @@ const HomeScreen = () => {
         Gestão, Eficiência & Qualidade.
 
       </Text>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={[styles.loginButtonWrapper,
+               { backgroundColor: colors.white, },
+        ]}
+        onPress={handleLogin}
+        >
+          <Text style={styles.loginButtonText}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.loginButtonWrapper]}>
+          <Text style={styles.signupButtonText}>Sign-up</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -39,10 +57,35 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     subTitle: {
-      fontSize: 15,
+      fontSize: 20,
       textAlign: "center",
       color: colors.gray,
       fontFamily: fonts.Medium,
-
-    }
+      marginVertical: 20,
+    },
+    buttonContainer: {
+      flexDirection: "row",
+      marginTop: 70,
+      borderWidth: 1,
+      borderColor: colors.white,
+      width:"85%",
+      height: 60,
+      borderRadius: 100,
+    },
+    loginButtonWrapper: {
+      justifyContent: "center",
+      alignItems: "center",
+      width: "50%",
+      borderRadius: 98,
+    },
+    loginButtonText:{
+      fontSize: 18,
+      color: colors.blue,
+      fontFamily: fonts.SemiBold,
+    },
+    signupButtonText:{
+      color: colors.white,
+      fontFamily: fonts.SemiBold,
+      fontSize: 18,
+    },
 });
