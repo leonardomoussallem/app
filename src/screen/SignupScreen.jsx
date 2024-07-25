@@ -6,15 +6,15 @@ import { fonts } from '../utils/fonts';
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import { useNavigation } from '@react-navigation/native';
 
-const LoginScreen = () => {
+const SignupScreen = () => {
   const navigation = useNavigation();
   const [secureEntery, setSecureEntery] = useState(true);
 
   const handleGoBack = () => {
     navigation.goBack();
   };
-  const handleSignup = () => {
-    navigation.navigate("SIGNUP")
+  const handleLogin = () => {
+    navigation.navigate("LOGIN");
   }
 
   return (
@@ -26,8 +26,8 @@ const LoginScreen = () => {
         />
       </TouchableOpacity>
       <View style={styles.textContanier}>
-          <Text style={styles.headingText}>Olá! Seja</Text>
-          <Text style={styles.headingText}>Bem-Vindo de Volta!</Text>
+          <Text style={styles.headingText}>Olá!</Text>
+          <Text style={styles.headingText}>Vamos Começar?</Text>
         </View>
         <View style={styles.formContainer}>
           <View style={styles.inputContainer}>
@@ -59,14 +59,20 @@ const LoginScreen = () => {
           color={colors.white} />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity>
-            <Text style={styles.forgotPasswordText}>
-              Esqueceu a Senha?
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.inputContainer}>
+          <SimpleLineIcons name={"screen-smartphone"} 
+          size={25} 
+          color={colors.white} />
+            <TextInput style={styles.TextInput} 
+            placeholder='Digite o seu numero ' 
+            placeholderTextColor={colors.gray}
+            secureTextEntry={secureEntery}
+            keyboardType='phone-pad'
+            />
+          </View>
           <TouchableOpacity style={styles.loginButtonWrapper}>
             <Text style={styles.loginText}>
-              Login
+              Inscreva-se
             </Text>
           </TouchableOpacity>
           <Text style={styles.continueText}>ou continue com</Text>
@@ -79,9 +85,9 @@ const LoginScreen = () => {
               <Text style={styles.googleText}>Goggle</Text>
           </TouchableOpacity>
           <View style={styles.footerContainer}>
-            <Text style={styles.accountText}>Não tem uma Conta?</Text>
-            <TouchableOpacity onPress={handleSignup}>
-            <Text style={styles.signupText}>Crie Agora</Text>
+            <Text style={styles.accountText}>Já tem uma Conta?</Text>
+            <TouchableOpacity onPress={handleLogin}>
+            <Text style={styles.signupText}>Login</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -89,7 +95,7 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default SignupScreen;
 
 const styles = StyleSheet.create({
 

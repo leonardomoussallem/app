@@ -10,6 +10,9 @@ const HomeScreen = () => {
   const handleLogin = () => {
     navigation.navigate("LOGIN");
   };
+  const handleSignup = () => {
+    navigation.navigate("SIGNUP");
+  };
   return (
     <View style={styles.container}>
       <Image source={require("../assets/tgmlogo.png")} style={styles.bannerImage}/>
@@ -26,8 +29,8 @@ const HomeScreen = () => {
         >
           <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.loginButtonWrapper]}>
-          <Text style={styles.signupButtonText}>Sign-up</Text>
+        <TouchableOpacity style={[styles.loginButtonWrapper]} onPress={handleSignup}>
+          <Text style={styles.signupButtonText}>Inscreva-se</Text>
         </TouchableOpacity>
       </View>
     </View>
