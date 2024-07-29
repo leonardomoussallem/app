@@ -21,7 +21,14 @@ const SignupScreen = () => {
     try {
       const response = await createUserWithEmailAndPassword(auth, email, password);
       console.log(response);
-      alert('Cheque seu Email');
+      alert('Registro Concluído');
+  
+      // Navegue para a tela HOME ou ajuste o estado de navegação
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Inside' }], // Substitua por qualquer rota desejada
+      });
+  
     } catch (error) {
       console.log(error);
       alert('Registro falhou: ' + error.message);
@@ -29,6 +36,7 @@ const SignupScreen = () => {
       setloading(false);
     }
   };
+  
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -69,7 +77,7 @@ const SignupScreen = () => {
             onChangeText={setPassword}
             value={password}
           />
-          <TouchableOpacity onPress={(signUp) => setSecureEntery(prev => !prev)}>
+          <TouchableOpacity onPress={() => setSecureEntery(prev => !prev)}>
             <SimpleLineIcons name="eye" size={20} color={colors.white} />
           </TouchableOpacity>
         </View>
